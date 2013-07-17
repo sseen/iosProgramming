@@ -8,5 +8,5 @@
 
 #import <Foundation/Foundation.h>
 
-@interface RootVC : UIViewController <UIAlertViewDelegate>
+@interface RootVC : UIViewController <UIAlertViewDelegate, UITextViewDelegate>
 @end

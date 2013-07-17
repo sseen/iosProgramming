@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC3F964C17967223005D1746 /* Balloon_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AC3F964B17967223005D1746 /* Balloon_1@2x.png */; };
+		AC3F964E1796722A005D1746 /* Balloon_1.png in Resources */ = {isa = PBXBuildFile; fileRef = AC3F964D1796722A005D1746 /* Balloon_1.png */; };
 		ACB476C5179530C400A94916 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACB476C4179530C400A94916 /* UIKit.framework */; };
 		ACB476C7179530C400A94916 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACB476C6179530C400A94916 /* Foundation.framework */; };
 		ACB476C9179530C400A94916 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACB476C8179530C400A94916 /* CoreGraphics.framework */; };
@@ -24,6 +26,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AC3F964B17967223005D1746 /* Balloon_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Balloon_1@2x.png"; sourceTree = "<group>"; };
+		AC3F964D1796722A005D1746 /* Balloon_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Balloon_1.png; sourceTree = "<group>"; };
 		ACB476C1179530C400A94916 /* UITest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UITest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACB476C4179530C400A94916 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		ACB476C6179530C400A94916 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -116,6 +120,8 @@
 		ACB476E51795372E00A94916 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				AC3F964D1796722A005D1746 /* Balloon_1.png */,
+				AC3F964B17967223005D1746 /* Balloon_1@2x.png */,
 				ACB476E61795374000A94916 /* blueButton.png */,
 				ACB476E71795374000A94916 /* blueButton@2x.png */,
 				ACB476E81795374000A94916 /* blueButtonHighlight.png */,
@@ -183,6 +189,8 @@
 				ACB476EB1795374000A94916 /* blueButton@2x.png in Resources */,
 				ACB476EC1795374000A94916 /* blueButtonHighlight.png in Resources */,
 				ACB476ED1795374000A94916 /* blueButtonHighlight@2x.png in Resources */,
+				AC3F964C17967223005D1746 /* Balloon_1@2x.png in Resources */,
+				AC3F964E1796722A005D1746 /* Balloon_1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,7 +283,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "UITest/UITest-Prefix.pch";
 				INFOPLIST_FILE = "UITest/UITest-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos5.1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -286,7 +296,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "UITest/UITest-Prefix.pch";
 				INFOPLIST_FILE = "UITest/UITest-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos5.1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -310,6 +322,7 @@
 				ACB476E0179530C400A94916 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

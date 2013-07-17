@@ -7,8 +7,14 @@
 //
 
 #import "RootVC.h"
+@interface RootVC ()
+
+@property (nonatomic, retain)UITextView *textView;
+
+@end
 
 @implementation RootVC
+@synthesize textView;
 
 - (void)viewDidLoad {
     UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(80, 130, 160, 88)];
@@ -26,21 +32,50 @@
     [buttonAuto setContentMode:UIViewContentModeScaleAspectFill];
     [[self view] addSubview:buttonAuto];
     
-    //初始化label
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0,0,0,0)];
-    //设置自动行数与字符换行
+    //自适应内容的label one
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 20, 200, 200)];
+    UIFont *font = [UIFont fontWithName:@"Helvetica" size:15.0];
+    [label setFont:font];
     [label setNumberOfLines:0];
-    label.lineBreakMode = UILineBreakModeWordWrap;
-    // 测试字串
-    NSString *s = @"这是一个测试！！！adsfsaf时发生发勿忘我勿忘我勿忘我勿忘我勿忘我阿阿阿阿阿阿阿阿阿阿阿阿阿啊00000000阿什顿。。。";
-    UIFont *font = [UIFont fontWithName:@"Arial" size:12];
-    //设置一个行高上限
-    CGSize size = CGSizeMake(320,200);
-    //计算实际frame大小，并将label的frame变成实际大小
-    CGSize labelsize = [s sizeWithFont:font constrainedToSize:size lineBreakMode:UILineBreakModeWordWrap];
-    [label setFrame:CGRectMake(0, 0, labelsize.width, labelsize.height)];
+    NSString *text = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    CGSize size = [text sizeWithFont:font constrainedToSize:CGSizeMake(100.0f, 200.0f) lineBreakMode:UILineBreakModeWordWrap];
+    CGRect rect = label.frame;
+    rect.size = size;
+    [label setFrame:rect];
+    [label setText:text];
     [label setBackgroundColor:[UIColor purpleColor]];
-    [[self view] addSubview:label];
+    [self.view addSubview:label];
+    //自适应内容的label two
+    UILabel *labelTwo = [[UILabel alloc] init];
+    labelTwo.text = @"I am the very model of a modern Major-General, I've information vegetable, animal, and mineral";
+    labelTwo.frame = CGRectMake(20, 280, 280, 150);
+    labelTwo.textAlignment = UITextAlignmentCenter;
+    //-- 下面两句的顺序有关系
+    [labelTwo setNumberOfLines:0];
+    [labelTwo sizeToFit];
+    //-- 重新设置frame让内容对齐
+    CGRect myFrame = labelTwo.frame;
+    myFrame = CGRectMake(myFrame.origin.x, myFrame.origin.y,
+                         280, myFrame.size.height);
+    labelTwo.frame = myFrame;
+    [labelTwo setBackgroundColor:[UIColor orangeColor]];
+    [self.view addSubview:labelTwo];
+    
+    label = nil;
+    labelTwo = nil;
+    
+    //uitextview
+    textView = [[UITextView alloc] init];
+    textView.text = @"/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk/System/Library/PrivateFrameworks/ChatKit.framework";
+    textView.frame = CGRectMake(20, 380, 280, 50);
+    CGRect textImageFrame = CGRectMake(0, 0, 280, 380);
+    UIImageView *imageView =[[UIImageView alloc] initWithFrame:textImageFrame];
+    imageView.image = [[UIImage imageNamed:@"Balloon_1"] resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
+    textView.backgroundColor = [UIColor grayColor];
+    textView.delegate = self;
+    [textView addSubview:imageView];
+    [textView sendSubviewToBack:imageView];
+    [self.view addSubview:textView];
 
 }
 
@@ -61,4 +96,40 @@
         NSLog(@"second button");
     }
 }
+
+- (void)viewWillAppear:(BOOL)animated {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeContentViewPoint:) name:UIKeyboardWillShowNotification object:nil];
+
+}
+
+// 根据键盘状态，调整_mainView的位置
+- (void) changeContentViewPoint:(NSNotification *)notification{
+    NSDictionary *userInfo = [notification userInfo];
+    NSValue *value = [userInfo objectForKey:UIKeyboardFrameEndUserInfoKey];
+    CGFloat keyBoardEndY = value.CGRectValue.origin.y;  // 得到键盘弹出后的键盘视图所在y坐标
+    
+    NSNumber *duration = [userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey];
+    NSNumber *curve = [userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey];
+    
+    // 添加移动动画，使视图跟随键盘移动
+    [UIView animateWithDuration:duration.doubleValue animations:^{
+        [UIView setAnimationBeginsFromCurrentState:YES];
+        [UIView setAnimationCurve:[curve intValue]];
+        
+        
+        textView.center = CGPointMake(textView.center.x, keyBoardEndY - textView.bounds.size.height/2.0);   // keyBoardEndY的坐标包括了状态栏的高度，要减去
+        
+    }];
+    
+}
+
+- (BOOL)textView:(UITextView *)textView2 shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    if([text isEqualToString:@"\n"]) {
+        [textView2 resignFirstResponder];
+        return NO;
+    }
+    
+    return YES;
+}
+
 @end
