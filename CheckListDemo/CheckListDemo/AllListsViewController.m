@@ -8,6 +8,7 @@
 
 #import "AllListsViewController.h"
 #import "Checklist.h"
+#import "ViewController.h"
 
 @interface AllListsViewController ()
 
@@ -27,7 +28,7 @@
         [_lists addObject:list];
         
         list = [[Checklist alloc]init];
-        list.name = @"⼯工作";
+        list.name = @"工作";
         [_lists addObject:list];
         
         list = [[Checklist alloc]init];
@@ -78,7 +79,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 3;
+    return [_lists count];
 }
 
 
@@ -91,13 +92,24 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    cell.textLabel.text = [NSString stringWithFormat:@"清单:%ld", (long)indexPath.row];
+    Checklist *checklist = _lists[indexPath.row];
+    cell.textLabel.text = checklist.name;
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self performSegueWithIdentifier:@"ShowChecklist" sender:nil];
+    Checklist *checklist = _lists[indexPath.row];
+    [self performSegueWithIdentifier:@"ShowChecklist" sender:checklist];
+}
+
+#pragma mark - segue
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"ShwoChecklist"]) {
+        ViewController *controller = segue.destinationViewController;
+        controller.checlist = sender;
+    }
 }
 
 @end

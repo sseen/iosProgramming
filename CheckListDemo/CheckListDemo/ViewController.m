@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "CheckItem.h"
+#import "Checklist.h"
 
 @interface ViewController ()
 - (IBAction)addItem:(id)sender;
@@ -42,6 +43,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    self.title = self.checlist.name;
 }
 
 - (void)didReceiveMemoryWarning
