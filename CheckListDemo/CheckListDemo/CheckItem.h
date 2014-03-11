@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface CheckItem : NSObject
+@interface CheckItem : NSObject <NSCoding>
 @property (nonatomic, copy) NSString *text;
 @property (nonatomic) BOOL checked;
 
