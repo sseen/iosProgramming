@@ -93,7 +93,7 @@
 
 #pragma mark - segue
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"ShwoChecklist"]) {
+    if ([segue.identifier isEqualToString:@"ShowChecklist"]) {
         ViewController *controller = segue.destinationViewController;
         controller.checlist = sender;
     }
