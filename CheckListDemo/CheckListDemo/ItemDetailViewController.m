@@ -51,7 +51,7 @@
 }
 
 - (IBAction)done:(id)sender {
-    if (self.itemToEdit) {// add new
+    if (self.itemToEdit) {
         self.itemToEdit.text = self.textField.text;
         [self.delegate ItemDetailViewController:self didFinishEditingItem:self.itemToEdit];
     }else {

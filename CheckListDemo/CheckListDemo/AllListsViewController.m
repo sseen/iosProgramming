@@ -9,38 +9,15 @@
 #import "AllListsViewController.h"
 #import "Checklist.h"
 #import "ViewController.h"
+#import "CheckItem.h"
+#import "DataModel.h"
 
 @interface AllListsViewController ()
 
 @end
 
-@implementation AllListsViewController {
-    NSMutableArray *_lists;
-}
+@implementation AllListsViewController
 
-- (id)initWithCoder:(NSCoder *)aDecoder {
-    if ((self = [super initWithCoder:aDecoder])) {
-        _lists = [[NSMutableArray alloc] initWithCapacity:20];
-        Checklist *list;
-        
-        list = [[Checklist alloc] init];
-        list.name = @"娱乐";
-        [_lists addObject:list];
-        
-        list = [[Checklist alloc]init];
-        list.name = @"工作";
-        [_lists addObject:list];
-        
-        list = [[Checklist alloc]init];
-        list.name = @"学习";
-        [_lists addObject:list];
-        
-        list = [[Checklist alloc]init];
-        list.name = @"家庭";
-        [_lists addObject:list];
-    }
-    return self;
-}
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -79,7 +56,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [_lists count];
+    return [self.dataModel.lists count];
 }
 
 
@@ -92,7 +69,7 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    Checklist *checklist = _lists[indexPath.row];
+    Checklist *checklist = self.dataModel.lists[indexPath.row];
     cell.textLabel.text = checklist.name;
     cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
     
@@ -100,7 +77,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    Checklist *checklist = _lists[indexPath.row];
+    Checklist *checklist = self.dataModel.lists[indexPath.row];
     [self performSegueWithIdentifier:@"ShowChecklist" sender:checklist];
 }
 
@@ -109,7 +86,7 @@
     ListDetailViewController *controller = (ListDetailViewController *)navigationController.topViewController;
 //    ListDetailViewController *controller = navigationController;
     controller.delegate = self;
-    Checklist *checklist = _lists[indexPath.row];
+    Checklist *checklist = self.dataModel.lists[indexPath.row];
     controller.checklistToEdit = checklist;
     [self presentViewController:navigationController animated:YES completion:nil];
 }
@@ -138,8 +115,8 @@
 -(void)listDetailViewController:(ListDetailViewController *)controller didFinishAddingChecklist:
 (Checklist *)checklist{
     
-    NSInteger newRowIndex = [_lists count];
-    [_lists addObject:checklist];
+    NSInteger newRowIndex = [self.dataModel.lists count];
+    [self.dataModel.lists addObject:checklist];
     
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:newRowIndex inSection:0];
     
@@ -152,7 +129,7 @@
 -(void)listDetailViewController:(ListDetailViewController *)controller
       didFinishEditingChecklist:(Checklist *)checklist{
     
-    NSInteger index = [_lists indexOfObject:checklist];
+    NSInteger index = [self.dataModel.lists indexOfObject:checklist];
     
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
     

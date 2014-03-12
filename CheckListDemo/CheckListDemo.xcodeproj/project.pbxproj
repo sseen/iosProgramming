@@ -22,6 +22,7 @@
 		AC1D6EB518C845DA00A57B92 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AC1D6EB318C845DA00A57B92 /* InfoPlist.strings */; };
 		AC1D6EB718C845DA00A57B92 /* CheckListDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AC1D6EB618C845DA00A57B92 /* CheckListDemoTests.m */; };
 		AC729D7518CFF5A5008A77EB /* ListDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC729D7418CFF5A5008A77EB /* ListDetailViewController.m */; };
+		AC729D7818D051F0008A77EB /* DataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AC729D7718D051F0008A77EB /* DataModel.m */; };
 		AC996B0C18CF034F006E8330 /* Checklist.m in Sources */ = {isa = PBXBuildFile; fileRef = AC996B0A18CF034F006E8330 /* Checklist.m */; };
 		AC996B0D18CF034F006E8330 /* ItemDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC996B0B18CF034F006E8330 /* ItemDetailViewController.m */; };
 		AC996B1018CF0395006E8330 /* AllListsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC996B0F18CF0395006E8330 /* AllListsViewController.m */; };
@@ -61,6 +62,8 @@
 		AC1D6EB618C845DA00A57B92 /* CheckListDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CheckListDemoTests.m; sourceTree = "<group>"; };
 		AC729D7318CFF5A5008A77EB /* ListDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListDetailViewController.h; sourceTree = "<group>"; };
 		AC729D7418CFF5A5008A77EB /* ListDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListDetailViewController.m; sourceTree = "<group>"; };
+		AC729D7618D051F0008A77EB /* DataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataModel.h; path = ../DataModel.h; sourceTree = "<group>"; };
+		AC729D7718D051F0008A77EB /* DataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataModel.m; path = ../DataModel.m; sourceTree = "<group>"; };
 		AC996B0818CF034F006E8330 /* Checklist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Checklist.h; sourceTree = "<group>"; };
 		AC996B0918CF034F006E8330 /* ItemDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemDetailViewController.h; sourceTree = "<group>"; };
 		AC996B0A18CF034F006E8330 /* Checklist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Checklist.m; sourceTree = "<group>"; };
@@ -130,6 +133,8 @@
 		AC1D6E9118C845DA00A57B92 /* CheckListDemo */ = {
 			isa = PBXGroup;
 			children = (
+				AC729D7618D051F0008A77EB /* DataModel.h */,
+				AC729D7718D051F0008A77EB /* DataModel.m */,
 				AC996B0E18CF0395006E8330 /* AllListsViewController.h */,
 				AC996B0F18CF0395006E8330 /* AllListsViewController.m */,
 				AC729D7318CFF5A5008A77EB /* ListDetailViewController.h */,
@@ -226,7 +231,7 @@
 		AC1D6E8018C845DA00A57B92 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = sunydea;
 				TargetAttributes = {
 					AC1D6EA818C845DA00A57B92 = {
@@ -280,6 +285,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC1D6EA218C845DA00A57B92 /* ViewController.m in Sources */,
+				AC729D7818D051F0008A77EB /* DataModel.m in Sources */,
 				AC1D6E9C18C845DA00A57B92 /* AppDelegate.m in Sources */,
 				AC996B1018CF0395006E8330 /* AllListsViewController.m in Sources */,
 				AC996B0D18CF034F006E8330 /* ItemDetailViewController.m in Sources */,
@@ -341,7 +347,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -380,7 +385,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -438,7 +442,6 @@
 		AC1D6EBE18C845DA00A57B92 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/CheckListDemo.app/CheckListDemo";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -461,7 +464,6 @@
 		AC1D6EBF18C845DA00A57B92 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/CheckListDemo.app/CheckListDemo";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
