@@ -72,7 +72,11 @@
 
 -(NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath
                                                                              *)indexPath{
-    return nil;
+    if (indexPath.section == 1) {
+        return indexPath;
+    }else {
+        return nil;
+    }
 }
 
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range

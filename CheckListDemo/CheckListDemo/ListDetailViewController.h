@@ -24,6 +24,7 @@
 
 @property(nonatomic,weak)IBOutlet UITextField *textField;
 @property(nonatomic,weak)IBOutlet UIBarButtonItem *doneBarButton;
+@property (weak, nonatomic) IBOutlet UIImageView *iconImageView;
 
 @property(nonatomic,weak) id <ListDetailViewControllerDelegate> delegate;
 @property(nonatomic,strong) Checklist *checklistToEdit;
