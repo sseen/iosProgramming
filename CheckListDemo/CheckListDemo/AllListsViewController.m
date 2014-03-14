@@ -45,6 +45,17 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    self.navigationController.delegate = self;
+    NSInteger index = [self.dataModel indexOfSelectedChecklist];
+    if (index != -1) {
+        Checklist *checklist = self.dataModel.lists[index];
+        [self performSegueWithIdentifier:@"ShowChecklist" sender:checklist];
+    }
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -77,6 +88,8 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self.dataModel setIndexOfSelectedChecklist:indexPath.row];
+    
     Checklist *checklist = self.dataModel.lists[indexPath.row];
     [self performSegueWithIdentifier:@"ShowChecklist" sender:checklist];
 }
@@ -137,5 +150,12 @@
     cell.textLabel.text = checklist.name;
     [self dismissViewControllerAnimated:YES completion:nil];
     
+}
+
+#pragma mark nav delegate
+- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
+    if (viewController == self) {
+        [self.dataModel setIndexOfSelectedChecklist:-1];
+    }
 }
 @end
