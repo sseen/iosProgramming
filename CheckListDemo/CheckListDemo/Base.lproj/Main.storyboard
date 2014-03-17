@@ -40,7 +40,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jHw-2Y-WI7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1753" y="804"/>
+            <point key="canvasLocation" x="2279" y="804"/>
         </scene>
         <!--View Controller - Chicklist-->
         <scene sceneID="Y7d-ZY-Imp">
@@ -174,21 +174,6 @@
             </objects>
             <point key="canvasLocation" x="-43" y="115"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="fGB-bG-7mq">
-            <objects>
-                <navigationController storyboardIdentifier="ListNavigationController" definesPresentationContext="YES" id="uOe-NB-WVr" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gWb-V9-zg4">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="6vM-Ma-G0f" kind="relationship" relationship="rootViewController" id="yR6-jJ-7t3"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pkA-5U-Msc" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="917" y="804"/>
-        </scene>
         <!--All Lists View Controller - checkname-->
         <scene sceneID="C8r-z1-zee">
             <objects>
@@ -205,7 +190,7 @@
                     <navigationItem key="navigationItem" title="checkname" id="r3l-nD-Ljh">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Pol-Oy-P6Z">
                             <connections>
-                                <segue destination="uOe-NB-WVr" kind="modal" identifier="AddChecklist" id="PdG-33-Jtf"/>
+                                <segue destination="dpM-SM-mWz" kind="modal" id="Fgm-Kk-XyH"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -322,6 +307,25 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lUC-F8-hW8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1893" y="804"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Oky-Z7-PQn">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dpM-SM-mWz" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="UtO-5d-9Uo"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Gjh-nk-vQT">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="6vM-Ma-G0f" kind="relationship" relationship="rootViewController" id="owj-61-LQ1"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hvB-oa-EDH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1367" y="804"/>
         </scene>
